@@ -23,13 +23,21 @@
             <i class="fas fa-bell text-sm"></i>
             <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+        <a href="profile.php" class="flex items-center gap-2 hover:bg-gray-50 rounded-lg px-2 py-1 transition">
+            <?php
+            $fotoSesi = $_SESSION['user']['foto'] ?? null;
+            $fotoPath = $fotoSesi && file_exists('uploads/foto/' . $fotoSesi) ? 'uploads/foto/' . $fotoSesi : null;
+            ?>
+            <?php if ($fotoPath): ?>
+            <img src="<?= $fotoPath ?>" alt="Foto" class="w-8 h-8 rounded-full object-cover border-2 border-blue-200">
+            <?php else: ?>
+            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span class="text-white text-xs font-bold"><?= strtoupper(substr($_SESSION['user']['nama'] ?? 'U', 0, 1)) ?></span>
             </div>
+            <?php endif; ?>
             <span class="hidden md:block text-sm font-medium text-gray-700">
                 <?= htmlspecialchars($_SESSION['user']['nama'] ?? 'User') ?>
             </span>
-        </div>
+        </a>
     </div>
 </header>

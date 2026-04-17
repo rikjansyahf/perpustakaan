@@ -88,21 +88,28 @@
 
     <!-- User info + Logout -->
     <div class="px-4 py-4 border-t border-blue-600">
-        <div class="flex items-center gap-3 px-3 py-2 mb-2">
+        <a href="profile.php" class="flex items-center gap-3 px-3 py-2 mb-2 hover:bg-blue-600 rounded-xl transition">
+            <?php
+            $fotoSesi = $_SESSION['user']['foto'] ?? null;
+            $fotoPath = $fotoSesi && file_exists('uploads/foto/' . $fotoSesi) ? 'uploads/foto/' . $fotoSesi : null;
+            ?>
+            <?php if ($fotoPath): ?>
+            <img src="<?= $fotoPath ?>" alt="Foto" class="w-8 h-8 rounded-full object-cover border-2 border-blue-400 flex-shrink-0">
+            <?php else: ?>
             <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <span class="text-xs font-bold"><?= strtoupper(substr($_SESSION['user']['nama'] ?? 'U', 0, 1)) ?></span>
             </div>
+            <?php endif; ?>
             <div class="leading-tight overflow-hidden">
                 <p class="text-sm font-medium truncate"><?= htmlspecialchars($_SESSION['user']['nama'] ?? 'User') ?></p>
                 <span class="text-xs px-1.5 py-0.5 rounded-full font-medium <?= isAdmin() ? 'bg-yellow-400 text-yellow-900' : 'bg-blue-400 text-blue-900' ?>">
                     <?= isAdmin() ? 'Admin' : 'Peminjam' ?>
                 </span>
             </div>
-        </div>
+        </a>
 
         <a href="logout.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-300 hover:bg-red-500 hover:text-white transition text-sm">
             <i class="fas fa-sign-out-alt w-4 text-center"></i>
             <span>Logout</span>
-        </a>
-    </div>
+        </a>    </div>
 </aside>
