@@ -6,9 +6,7 @@
 
     <!-- Brand -->
     <div class="flex items-center gap-3 px-6 py-5 border-b border-blue-600">
-        <div class="w-9 h-9 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
-            <i class="fas fa-book-open text-blue-600 text-sm"></i>
-        </div>
+        <img src="logosmkpas2.png" alt="Logo SMKPAS2" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5 flex-shrink-0">
         <div class="leading-tight">
             <p class="font-bold text-sm">PERPUSTAKAAN</p>
             <p class="text-blue-300 text-xs">SMKPAS2</p>

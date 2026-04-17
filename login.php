@@ -32,8 +32,8 @@ if(isset($_POST['login'])) {
     <div class="w-full max-w-md">
         <!-- Logo / Brand -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4">
-                <i class="fas fa-book-open text-blue-600 text-2xl"></i>
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4 p-1">
+                <img src="logosmkpas2.png" alt="Logo SMKPAS2" class="w-full h-full object-contain">
             </div>
             <h1 class="text-white text-2xl font-bold">Perpustakaan Digital</h1>
             <p class="text-blue-200 text-sm mt-1">SMKPAS2</p>
