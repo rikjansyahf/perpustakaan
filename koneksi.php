@@ -42,4 +42,21 @@ function requireAdminOrPetugas() {
 function isAdminOrPetugas() {
     return isAdmin();
 }
+
+// ── Settings helper ───────────────────────────────────────
+function getSetting(string $key, string $default = ''): string {
+    global $koneksi;
+    $key = mysqli_real_escape_string($koneksi, $key);
+    $res = mysqli_fetch_row(mysqli_query($koneksi, "SELECT setting_value FROM settings WHERE setting_key='$key'"));
+    return $res ? (string)$res[0] : $default;
+}
+
+// Cache semua settings sekaligus (panggil sekali per request)
+function getAllSettings(): array {
+    global $koneksi;
+    $settings = [];
+    $res = mysqli_query($koneksi, "SELECT setting_key, setting_value FROM settings");
+    while ($row = mysqli_fetch_row($res)) $settings[$row[0]] = $row[1];
+    return $settings;
+}
 ?>

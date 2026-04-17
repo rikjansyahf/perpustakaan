@@ -122,7 +122,24 @@ INSERT INTO buku (judul, pengarang, penerbit, tahun_terbit, isbn, id_kategori, s
 ('Biografi Soekarno', 'Cindy Adams', 'Gunung Agung', 1966, '978-979-100-100-1', 6, 2, 'Kisah hidup Presiden pertama RI');
 
 -- ============================================
--- TABLE: request_pinjam
+-- TABLE: settings
+-- ============================================
+CREATE TABLE settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    setting_key VARCHAR(100) NOT NULL UNIQUE,
+    setting_value TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO settings (setting_key, setting_value) VALUES
+('app_name', 'Perpustakaan Digital'),
+('app_subtitle', 'SMKPAS2'),
+('app_logo', 'logosmkpas2.png'),
+('denda_per_hari', '1000'),
+('maks_hari_pinjam', '14'),
+('footer_text', '© 2026 Perpustakaan Digital SMKPAS2');
+
+
 -- Peminjam mengajukan request, petugas/admin approve
 -- ============================================
 CREATE TABLE request_pinjam (

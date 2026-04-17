@@ -270,7 +270,7 @@ function openEditModal(data) {
                 <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal Kembali</label>
                 <input type="date" name="tanggal_kembali" id="pinjamTglKembali" required
                     class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <p class="text-xs text-gray-400 mt-1">Maksimal peminjaman 14 hari</p>
+                <p class="text-xs text-gray-400 mt-1">Maksimal peminjaman <?= (int)getSetting('maks_hari_pinjam', '14') ?> hari</p>
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Catatan <span class="text-gray-400 font-normal">(opsional)</span></label>
@@ -280,7 +280,7 @@ function openEditModal(data) {
             </div>
             <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-xs text-yellow-700">
                 <i class="fas fa-info-circle mr-1"></i>
-                Permintaan akan diproses oleh admin. Denda keterlambatan <strong>Rp1.000/hari</strong>.
+                Permintaan akan diproses oleh admin. Denda keterlambatan <strong>Rp<?= number_format((int)getSetting('denda_per_hari','1000'), 0, ',', '.') ?>/hari</strong>.
             </div>
             <div class="flex gap-3 pt-1">
                 <button type="submit" name="request_pinjam" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
@@ -300,7 +300,7 @@ function openPinjamModal(data) {
     const d = new Date();
     d.setDate(d.getDate() + 7);
     const maxD = new Date();
-    maxD.setDate(maxD.getDate() + 14);
+    maxD.setDate(maxD.getDate() + <?= (int)getSetting('maks_hari_pinjam', '14') ?>);
     const fmt = dt => dt.toISOString().split('T')[0];
     const tgl = document.getElementById('pinjamTglKembali');
     tgl.value = fmt(d);

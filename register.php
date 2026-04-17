@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "includes/app_settings.php";
 
 if(isset($_POST['register'])){
     $nama = $_POST['nama'];
@@ -31,7 +32,7 @@ if(isset($_POST['register'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Perpustakaan Digital</title>
+    <title><?= htmlspecialchars($cfg['app_name']) ?> - Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,10 +44,10 @@ if(isset($_POST['register'])){
         <!-- Brand -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4 p-1">
-                <img src="logosmkpas2.png" alt="Logo SMKPAS2" class="w-full h-full object-contain">
+                <img src="<?= htmlspecialchars($cfg['app_logo']) ?>" alt="Logo" class="w-full h-full object-contain">
             </div>
-            <h1 class="text-white text-2xl font-bold">Perpustakaan Digital</h1>
-            <p class="text-blue-200 text-sm mt-1">SMKPAS2</p>
+            <h1 class="text-white text-2xl font-bold"><?= htmlspecialchars($cfg['app_name']) ?></h1>
+            <p class="text-blue-200 text-sm mt-1"><?= htmlspecialchars($cfg['app_subtitle']) ?></p>
         </div>
 
         <!-- Card -->
@@ -124,7 +125,7 @@ if(isset($_POST['register'])){
             </div>
         </div>
 
-        <p class="text-center text-blue-200 text-xs mt-6">&copy; 2026 Perpustakaan Digital SMKPAS2</p>
+        <p class="text-center text-blue-200 text-xs mt-6"><?= htmlspecialchars($cfg['footer_text']) ?></p>
     </div>
 </body>
 </html>

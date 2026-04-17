@@ -10,7 +10,7 @@
 
     <!-- Tengah: Logo + Search (desktop) -->
     <div class="hidden lg:flex items-center gap-3">
-        <img src="logosmkpas2.png" alt="Logo SMKPAS2" class="w-7 h-7 object-contain opacity-70">
+        <img src="<?= htmlspecialchars($cfg['app_logo']) ?>" alt="Logo" class="w-7 h-7 object-contain opacity-70">
         <div class="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2 w-64">
             <i class="fas fa-search text-gray-400 text-sm"></i>
             <input type="text" placeholder="Cari sesuatu..." class="bg-transparent text-sm outline-none w-full text-gray-600">

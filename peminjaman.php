@@ -68,7 +68,7 @@ if (isset($_POST['kembalikan'])) {
     $denda  = 0;
     if ($tgl_aktual > $pinjam['tanggal_kembali']) {
         $selisih = (strtotime($tgl_aktual) - strtotime($pinjam['tanggal_kembali'])) / 86400;
-        $denda   = $selisih * 1000;
+        $denda   = $selisih * (int)getSetting('denda_per_hari', '1000');
         $status  = 'terlambat';
     }
     mysqli_query($koneksi, "UPDATE peminjaman SET status='$status', tanggal_dikembalikan='$tgl_aktual', denda=$denda WHERE id=$id");

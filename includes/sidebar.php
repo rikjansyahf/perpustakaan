@@ -6,10 +6,10 @@
 
     <!-- Brand -->
     <div class="flex items-center gap-3 px-6 py-5 border-b border-blue-600">
-        <img src="logosmkpas2.png" alt="Logo SMKPAS2" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5 flex-shrink-0">
+        <img src="<?= htmlspecialchars($cfg['app_logo']) ?>" alt="Logo" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5 flex-shrink-0">
         <div class="leading-tight">
-            <p class="font-bold text-sm">PERPUSTAKAAN</p>
-            <p class="text-blue-300 text-xs">SMKPAS2</p>
+            <p class="font-bold text-sm"><?= htmlspecialchars($cfg['app_name']) ?></p>
+            <p class="text-blue-300 text-xs"><?= htmlspecialchars($cfg['app_subtitle']) ?></p>
         </div>
     </div>
 
@@ -54,6 +54,11 @@
         <a href="user.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl <?= basename($_SERVER['PHP_SELF']) == 'user.php' ? 'bg-white text-blue-700 font-semibold' : 'text-blue-100 hover:bg-blue-600' ?> transition text-sm">
             <i class="fas fa-users w-4 text-center"></i>
             <span>Kelola User</span>
+        </a>
+
+        <a href="settings.php" class="flex items-center gap-3 px-3 py-2.5 rounded-xl <?= basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'bg-white text-blue-700 font-semibold' : 'text-blue-100 hover:bg-blue-600' ?> transition text-sm">
+            <i class="fas fa-cog w-4 text-center"></i>
+            <span>Pengaturan</span>
         </a>
 
         <?php elseif (isPeminjam()): ?>
