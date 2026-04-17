@@ -133,7 +133,7 @@ include 'includes/header.php';
                 <?php endif; ?>
                 <?php if ($row['catatan_petugas']): ?>
                 <p class="text-xs <?= $row['status'] === 'ditolak' ? 'text-red-500' : 'text-green-600' ?> mt-1">
-                    <i class="fas fa-reply mr-1"></i>Balasan petugas: <?= htmlspecialchars($row['catatan_petugas']) ?>
+                    <i class="fas fa-reply mr-1"></i>Balasan admin: <?= htmlspecialchars($row['catatan_petugas']) ?>
                 </p>
                 <?php endif; ?>
             </div>

@@ -19,7 +19,7 @@ CREATE TABLE user (
     email VARCHAR(100),
     no_telepon VARCHAR(20),
     alamat TEXT,
-    level ENUM('admin', 'petugas', 'peminjam') NOT NULL DEFAULT 'peminjam',
+    level ENUM('admin', 'peminjam') NOT NULL DEFAULT 'peminjam',
     foto VARCHAR(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -95,8 +95,6 @@ CREATE TABLE ulasan (
 -- ============================================
 INSERT INTO user (nama, username, password, email, no_telepon, alamat, level) VALUES
 ('Administrator', 'admin', MD5('admin123'), 'admin@smkpas2.sch.id', '081200000001', 'SMKPAS2', 'admin'),
-('Budi Santoso', 'petugas1', MD5('petugas123'), 'petugas1@smkpas2.sch.id', '081200000002', 'Jl. Merdeka No.1', 'petugas'),
-('Siti Rahayu', 'petugas2', MD5('petugas123'), 'petugas2@smkpas2.sch.id', '081200000003', 'Jl. Sudirman No.5', 'petugas'),
 ('Ahmad Fauzi', 'peminjam1', MD5('peminjam123'), 'ahmad@gmail.com', '081200000004', 'Jl. Pahlawan No.10', 'peminjam'),
 ('Dewi Lestari', 'peminjam2', MD5('peminjam123'), 'dewi@gmail.com', '081200000005', 'Jl. Kenanga No.3', 'peminjam');
 
@@ -147,7 +145,7 @@ CREATE TABLE request_pinjam (
 -- DATA AWAL: Peminjaman (contoh)
 -- ============================================
 INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, tanggal_kembali, status, id_petugas) VALUES
-(4, 1, '2026-04-01', '2026-04-14', 'dipinjam', 2),
-(5, 3, '2026-04-05', '2026-04-18', 'dipinjam', 2),
-(4, 5, '2026-03-10', '2026-03-24', 'dikembalikan', 3),
-(5, 2, '2026-03-01', '2026-03-14', 'terlambat', 2);
+(2, 1, '2026-04-01', '2026-04-14', 'dipinjam', 1),
+(3, 3, '2026-04-05', '2026-04-18', 'dipinjam', 1),
+(2, 5, '2026-03-10', '2026-03-24', 'dikembalikan', 1),
+(3, 2, '2026-03-01', '2026-03-14', 'terlambat', 1);

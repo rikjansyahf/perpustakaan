@@ -12,7 +12,7 @@ if (isset($_POST['tambah'])) {
     $email     = mysqli_real_escape_string($koneksi, trim($_POST['email']));
     $no_telp   = mysqli_real_escape_string($koneksi, trim($_POST['no_telepon']));
     $alamat    = mysqli_real_escape_string($koneksi, trim($_POST['alamat']));
-    $level     = in_array($_POST['level'], ['admin','petugas','peminjam']) ? $_POST['level'] : 'peminjam';
+    $level     = in_array($_POST['level'], ['admin','peminjam']) ? $_POST['level'] : 'peminjam';
 
     $cek = mysqli_fetch_row(mysqli_query($koneksi, "SELECT COUNT(*) FROM user WHERE username='$username'"))[0];
     if ($cek > 0) {
@@ -31,7 +31,7 @@ if (isset($_POST['edit'])) {
     $email = mysqli_real_escape_string($koneksi, trim($_POST['email']));
     $no_telp = mysqli_real_escape_string($koneksi, trim($_POST['no_telepon']));
     $alamat  = mysqli_real_escape_string($koneksi, trim($_POST['alamat']));
-    $level   = in_array($_POST['level'], ['admin','petugas','peminjam']) ? $_POST['level'] : 'peminjam';
+    $level   = in_array($_POST['level'], ['admin','peminjam']) ? $_POST['level'] : 'peminjam';
 
     $sql = "UPDATE user SET nama='$nama',email='$email',no_telepon='$no_telp',alamat='$alamat',level='$level'";
     if (!empty($_POST['password'])) {
@@ -90,7 +90,6 @@ include 'includes/header.php';
     <select name="level" class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
         <option value="">Semua Role</option>
         <option value="admin"    <?= $levelFilter === 'admin'    ? 'selected' : '' ?>>Admin</option>
-        <option value="petugas"  <?= $levelFilter === 'petugas'  ? 'selected' : '' ?>>Petugas</option>
         <option value="peminjam" <?= $levelFilter === 'peminjam' ? 'selected' : '' ?>>Peminjam</option>
     </select>
     <button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm transition">Filter</button>
@@ -119,7 +118,7 @@ include 'includes/header.php';
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold
-                                <?= match($row['level']) { 'admin' => 'bg-yellow-500', 'petugas' => 'bg-green-500', default => 'bg-blue-500' } ?>">
+                                <?= $row['level'] === 'admin' ? 'bg-yellow-500' : 'bg-blue-500' ?>">
                                 <?= strtoupper(substr($row['nama'], 0, 1)) ?>
                             </div>
                             <span class="font-medium text-gray-800"><?= htmlspecialchars($row['nama']) ?></span>
@@ -131,7 +130,6 @@ include 'includes/header.php';
                     <td class="px-6 py-4">
                         <?php $badgeClass = match($row['level']) {
                             'admin'   => 'bg-yellow-100 text-yellow-700',
-                            'petugas' => 'bg-green-100 text-green-700',
                             default   => 'bg-blue-100 text-blue-700',
                         }; ?>
                         <span class="px-2 py-1 rounded-full text-xs font-medium <?= $badgeClass ?>"><?= ucfirst($row['level']) ?></span>
